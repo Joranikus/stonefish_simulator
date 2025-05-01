@@ -46,11 +46,11 @@ def generate_launch_description():
     )
 
     window_res_x_arg = DeclareLaunchArgument(
-        "window_res_x", default_value="2460", description="Window resolution width"
+        "window_res_x", default_value="1200", description="Window resolution width"
     )
 
     window_res_y_arg = DeclareLaunchArgument(
-        "window_res_y", default_value="1340", description="Window resolution height"
+        "window_res_y", default_value="720", description="Window resolution height"
     )
 
     quality_arg = DeclareLaunchArgument(
