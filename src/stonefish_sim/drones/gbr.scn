@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<scenario>
+    <robot name="GBR" fixed="false" self_collisions="false">
+        <base_link name="Base" type="model" physics="submerged">
+            <physical>
+                <mesh filename="gbr/gbr_physical_mesh_complex.obj" scale="1.0"/>
+                <origin rpy="0.0 0.0 3.14159" xyz="0.0 0.0 -0.077"/>
+            </physical>
+            <visual>
+                <mesh filename="gbr/gbr_visual_mesh.obj" scale="1.0"/>
+                <origin rpy="0.0 0.0 3.14159" xyz="0.0 0.0 0.245"/>
+            </visual>
+            <material name="Neutral"/>
+            <look name="Gray"/>
+            <mass value="13.26"/>
+            <inertia xyz="0.68 3.32 3.34"/>
+            <hydrodynamics viscous_drag="0.06 0.17 0.17" quadratic_drag="0.2 0.2 0.2"/>
+            <cg xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </base_link>
+
+        <actuator name="Thruster1" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 2.356" xyz="0.156 0.156 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.7"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster2" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.785" xyz="-0.156 0.156 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.7"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster3" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.785" xyz="0.156 -0.156 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="false">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.7"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster4" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 -0.785" xyz="-0.156 -0.156 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster5" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 -1.570796 0.0" xyz="0.096 0.115 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster6" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 -1.570796 0.0" xyz="-0.096 0.115 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster7" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 -1.570796 0.0" xyz="0.096 -0.115 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <actuator name="Thruster8" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 -1.570796 0.0" xyz="-0.096 -0.115 0.0"/>
+            <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
+            <propeller diameter="0.18" right="true">
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
+                <material name="robot_material"/>
+                <look name="Grey"/>
+            </propeller>
+            <rotor_dynamics type="zero_order"/>
+            <thrust_model type="linear_interpolation">
+                <input value="-40.0 -20.0 0.0 20.0 40.0"/>
+                <output value="-40.0 -20.0 0.0 20.0 40.0"/>
+            </thrust_model>
+        </actuator>
+
+        <world_transform xyz="0.0 0.0 0.0" rpy="3.14159 0.0 -1.570796"/>
+
+        <ros_subscriber thrusters="/gbr/thrusters"/>
+        <ros_publisher thrusters="/gbr/thruster_state"/>
+    </robot>
+</scenario>

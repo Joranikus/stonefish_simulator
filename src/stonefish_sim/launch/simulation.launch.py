@@ -42,6 +42,7 @@ def generate_launch_description():
             "orca_demo",
             "freya_demo",
             "orca_freya_demo",
+            "gbr_demo",
         ],
     )
 
