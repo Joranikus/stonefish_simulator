@@ -12,36 +12,28 @@ class GBRManualKeyboardController(Node):
         super().__init__('gbr_manual_keyboard_controller')
         self.publisher_ = self.create_publisher(Float64MultiArray, '/gbr/thrusters', 10)
         
-        # Initialize thrust values and control parameters
         self.thrust_values = [0.0] * 8
         self.active_keys = set()
         self.lock = threading.Lock()
         self.emergency_stop = False
 
-        # Enhanced key bindings with better descriptions
         self.thrust_map = {
-            # Horizontal movement (WASD)
             'w': [20.0, 20.0, -20.0, -20.0, 0.0, 0.0, 0.0, 0.0], 
             's': [-20.0, -20.0, 20.0, 20.0, 0.0, 0.0, 0.0, 0.0],
             'a': [20.0, -20.0, 20.0, -20.0, 0.0, 0.0, 0.0, 0.0], 
             'd': [-20.0, 20.0, -20.0, 20.0, 0.0, 0.0, 0.0, 0.0], 
             'q': [0.0, 0.0, 0.0, 0.0, -20.0, -20.0, -20.0, -20.0], 
             'e': [0.0, 0.0, 0.0, 0.0, 20.0, 20.0, 20.0, 20.0],    
-            
-            # Orientation controls (Numpad)
             '<up': [0.0, 0.0, 0.0, 0.0, -20.0, -20.0, 20.0, 20.0],
             '<down': [0.0, 0.0, 0.0, 0.0, 20.0, 20.0, -20.0, -20.0], 
             '<right': [0.0, 0.0, 0.0, 0.0, -20.0, 20.0, -20.0, 20.0], 
             '<left': [0.0, 0.0, 0.0, 0.0, 20.0, -20.0, 20.0, -20.0], 
             '<page_up': [20.0, -20.0, -20.0, 20.0, 0.0, 0.0, 0.0, 0.0],  
             '<page_down': [-20.0, 20.0, 20.0, -20.0, 0.0, 0.0, 0.0, 0.0],  
-            
-            # Special controls
-            '<space': self.emergency_stop_handler  # Spacebar for emergency stop
+            '<space': self.emergency_stop_handler
         }
 
-        # Setup timers and threads
-        self.timer = self.create_timer(0.05, self.publish_thrusters)  # 20Hz
+        self.timer = self.create_timer(0.05, self.publish_thrusters)
         self.keyboard_listener = keyboard.Listener(
             on_press=self.on_press,
             on_release=self.on_release
@@ -77,17 +69,14 @@ class GBRManualKeyboardController(Node):
                 self.thrust_values = [0.0] * 8
                 for key in self.active_keys:
                     if key in self.thrust_map:
-                        # Handle special functions
                         if callable(self.thrust_map[key]):
                             self.thrust_map[key]()
                         else:
-                            # Sum the thrust vectors
                             self.thrust_values = [sum(pair) for pair in zip(
                                 self.thrust_values, 
                                 self.thrust_map[key]
                             )]
 
-            # Create and publish message
             msg = Float64MultiArray()
             msg.data = self.thrust_values
             self.publisher_.publish(msg)
@@ -99,7 +88,7 @@ class GBRManualKeyboardController(Node):
         Active Keys: {self.active_keys}
         Emergency Stop: {'ACTIVE' if self.emergency_stop else 'inactive'}
         """
-        print("\033[2J\033[H")  # Clear screen
+        print("\033[2J\033[H")
         print(status)
 
     def __del__(self):

@@ -13,9 +13,12 @@
             <material name="Neutral"/>
             <look name="Gray"/>
             <mass value="13.26"/>
-            <inertia xyz="0.68 3.32 3.34"/>
-            <hydrodynamics viscous_drag="0.06 0.17 0.17" quadratic_drag="0.2 0.2 0.2"/>
-            <cg xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <inertia 
+                xx="0.1559" xy="0.001337" xz="-0.000095434"
+                yx="0.001337" yy="0.1893" yz="-0.003648"
+                zx="-0.000095434" zy="-0.003648" zz="0.2446"/>
+
+            <cg xyz="0.0 -0.003 -0.0013" rpy="0.0 0.0 0.0"/>
         </base_link>
 
         <actuator name="Thruster1" type="thruster">
@@ -23,7 +26,7 @@
             <origin rpy="0.0 0.0 2.356" xyz="0.156 0.156 0.0"/>
             <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
             <propeller diameter="0.18" right="true">
-                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.7"/>
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
                 <material name="robot_material"/>
                 <look name="Grey"/>
             </propeller>
@@ -39,7 +42,7 @@
             <origin rpy="0.0 0.0 0.785" xyz="-0.156 0.156 0.0"/>
             <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
             <propeller diameter="0.18" right="true">
-                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.7"/>
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
                 <material name="robot_material"/>
                 <look name="Grey"/>
             </propeller>
@@ -55,7 +58,7 @@
             <origin rpy="0.0 0.0 0.785" xyz="0.156 -0.156 0.0"/>
             <specs max_setpoint="50.0" inverted_setpoint="false" normalized_setpoint="false"/>
             <propeller diameter="0.18" right="false">
-                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.7"/>
+                <mesh filename="gbr/T200_CCW_propeller.obj" scale="0.8"/>
                 <material name="robot_material"/>
                 <look name="Grey"/>
             </propeller>
