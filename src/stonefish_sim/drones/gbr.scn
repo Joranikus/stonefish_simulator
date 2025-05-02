@@ -11,7 +11,7 @@
                 <origin rpy="0.0 0.0 3.14159" xyz="0.0 0.0 0.245"/>
             </visual>
             <material name="Neutral"/>
-            <look name="Gray"/>
+            <look name="CarbonFiber"/>
             <mass value="13.26"/>
             <inertia 
                 xx="0.1559" xy="0.001337" xz="-0.000095434"
