@@ -14,7 +14,6 @@ install(DIRECTORY
   data
   metadata
   drones
-  tasks
   DESTINATION share/${PROJECT_NAME}
 )
 
