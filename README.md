@@ -1,14 +1,29 @@
-# Sub-Horizon Stonefish Simulator
+
+![maintext](./images/Sub_Horizon_-_Stonefish_Simulator.png)
+
+![GIF demo](./images/floating_rov.gif)
+
+![ROS2](https://img.shields.io/badge/ROS2-Jazzy-blue)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-orange)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![GPU Support](https://img.shields.io/badge/rendering-GPU%20optional-lightgrey)
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Running the Simulator](#running-the-simulator)
+
 
 ## Installation
+![installation](./images/Installation.png)
 ### Prerequisites
 
+- Ubuntu 24.04
 - ROS2 Jazzy
-- Tested on Ubuntu 24.04
 
 ### Clone Repository
 
-The cloned GIT is the ROS2 workspace, you dont need to make you own workspace.
+The cloned repository **is** the ROS2 workspace. You do not need to create your own.
 
 SSH:
 ```bash
@@ -30,7 +45,7 @@ HTTPS:
   sudo apt install -y tmux libglm-dev python3-pynput
 ```
 
-### Building Stonefish
+### Building Stonefish Library
 
 ```bash
   cd stonefish_simulator/include/stonefish
@@ -47,7 +62,8 @@ HTTPS:
 ```bash
   sudo make install
 ```
-Got to git root folder:
+Return to repository root:
+
 ```bash
   cd ../../..
 ```
@@ -62,7 +78,7 @@ Needs to be run in git root:
   source install/setup.bash
 ```
 
-### Running DEMO Script
+### Running DEMO Script to Test
 
 Needs to be run in git root:
 ```bash
@@ -70,7 +86,7 @@ Needs to be run in git root:
 ```
 
 ## Running the Simulator
-
+![runningsimulator](./images/Running_Simulator.png)
 The simulator can be run either through prepared scripts or manually with custom parameters.
 
 ### Using Prepared Scripts
