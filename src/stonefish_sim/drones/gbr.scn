@@ -15,10 +15,6 @@
                 <material name="Neutral"/>
                 <look name="Black"/>
                 <mass value="13.26"/>
-                <inertia 
-                    xx="0.1559" xy="0.001337" xz="-0.000095434"
-                    yx="0.001337" yy="0.1893" yz="-0.003648"
-                    zx="-0.000095434" zy="-0.003648" zz="0.2446"/>
                 <cg xyz="0.0 -0.003 -0.0013" rpy="0.0 0.0 0.0"/>
                 <compound_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </external_part>

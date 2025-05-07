@@ -20,10 +20,10 @@ class ConcatenateSubstitutions(Substitution):
 
 def generate_launch_description():
     # Get the directories of the involved packages
-    vortex_stonefish_sim_dir = get_package_share_directory("stonefish_sim")
+    stonefish_sim_dir = get_package_share_directory("stonefish_sim")
     stonefish_ros2_dir = get_package_share_directory("stonefish_ros2")
 
-    simulation_data_default = PathJoinSubstitution([vortex_stonefish_sim_dir, "data"])
+    simulation_data_default = PathJoinSubstitution([stonefish_sim_dir, "data"])
 
     simulation_data_arg = DeclareLaunchArgument(
         "simulation_data",
@@ -31,10 +31,22 @@ def generate_launch_description():
         description="Path to the simulation data folder",
     )
 
+
+    robot_arg = DeclareLaunchArgument(
+        "robot",
+        default_value="gbr",
+        description="Path to the robot file",
+        #new robot scenarios need to be added here
+        choices=[
+            "gbr",
+        ],
+    )
+
     scenario_desc_arg = DeclareLaunchArgument(
         "task",
-        default_value=PathJoinSubstitution("orca_demo"),
+        default_value="demo",
         description="Path to the scenario file",
+        #new enviorment scenarios need to be added here
         choices=[
             "docking",
             "pipeline",
@@ -42,7 +54,7 @@ def generate_launch_description():
             "orca_demo",
             "freya_demo",
             "orca_freya_demo",
-            "gbr_demo",
+            "demo",
         ],
     )
 
@@ -61,10 +73,13 @@ def generate_launch_description():
 
     scenario_desc_resolved = PathJoinSubstitution(
         [
-            vortex_stonefish_sim_dir,
+            stonefish_sim_dir,
             "scenarios",
             ConcatenateSubstitutions(
-                LaunchConfiguration("task"), TextSubstitution(text=".scn")
+                LaunchConfiguration("robot"),
+                TextSubstitution(text="_"),
+                LaunchConfiguration("task"),
+                TextSubstitution(text=".scn")
             ),
         ]
     )
@@ -85,6 +100,7 @@ def generate_launch_description():
     return LaunchDescription(
         [
             simulation_data_arg,
+            robot_arg,
             scenario_desc_arg,
             window_res_x_arg,
             window_res_y_arg,
