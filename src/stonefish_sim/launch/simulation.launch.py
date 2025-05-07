@@ -9,7 +9,6 @@ from launch.substitutions import (
     TextSubstitution,
 )
 
-
 class ConcatenateSubstitutions(Substitution):
     def __init__(self, *substitutions):
         self.substitutions = substitutions
@@ -19,7 +18,6 @@ class ConcatenateSubstitutions(Substitution):
 
 
 def generate_launch_description():
-    # Get the directories of the involved packages
     stonefish_sim_dir = get_package_share_directory("stonefish_sim")
     stonefish_ros2_dir = get_package_share_directory("stonefish_ros2")
 
@@ -31,30 +29,15 @@ def generate_launch_description():
         description="Path to the simulation data folder",
     )
 
-
-    robot_arg = DeclareLaunchArgument(
-        "robot",
-        default_value="gbr",
-        description="Path to the robot file",
-        #new robot scenarios need to be added here
-        choices=[
-            "gbr",
-        ],
-    )
-
     scenario_desc_arg = DeclareLaunchArgument(
-        "task",
-        default_value="demo",
+        "scenario",
         description="Path to the scenario file",
-        #new enviorment scenarios need to be added here
+        #scenario files need to be added here
         choices=[
-            "docking",
-            "pipeline",
-            "structure",
-            "orca_demo",
-            "freya_demo",
-            "orca_freya_demo",
-            "demo",
+            "gbr_keyboard_demo",
+            "gbr_pipeline",
+            "gbr_docking",
+            "gbr_structure",
         ],
     )
 
@@ -76,10 +59,7 @@ def generate_launch_description():
             stonefish_sim_dir,
             "scenarios",
             ConcatenateSubstitutions(
-                LaunchConfiguration("robot"),
-                TextSubstitution(text="_"),
-                LaunchConfiguration("task"),
-                TextSubstitution(text=".scn")
+                LaunchConfiguration("scenario"), TextSubstitution(text=".scn")
             ),
         ]
     )
@@ -100,7 +80,6 @@ def generate_launch_description():
     return LaunchDescription(
         [
             simulation_data_arg,
-            robot_arg,
             scenario_desc_arg,
             window_res_x_arg,
             window_res_y_arg,
