@@ -1,0 +1,6 @@
+[submodule "include/stonefish"]
+	path = include/stonefish
+	url = https://github.com/patrykcieslak/stonefish.git
+[submodule "include/stonefish_ros2"]
+	path = include/stonefish_ros2
+	url = https://github.com/patrykcieslak/stonefish_ros2.git
