@@ -1,7 +1,7 @@
 # Sub-Horizon Stonefish Simulator
 
 ## Installation
-#### Prerequisites
+### Prerequisites
 
 - ROS2 Jazzy
 - Tested on Ubuntu 24.04
@@ -68,3 +68,43 @@ Needs to be run in git root:
 ```bash
   bash src/stonefish_sim/scripts/gbr_keyboard_demo.sh
 ```
+
+## Running the Simulator
+
+The simulator can be run either through prepared scripts or manually with custom parameters.
+
+### Using Prepared Scripts
+
+The simulator comes with several pre-configured scripts located in `src/stonefish_sim/scripts/`:
+
+Demo script:
+```bash
+bash src/stonefish_sim/scripts/gbr_keyboard_demo.sh
+```
+### Manual Launch
+
+To run scenarios manually, use the ROS2 launch command with desired parameters:
+
+Basic launch with default parameters:
+```bash
+ros2 launch stonefish_sim simulation.launch.py scenario:=gbr_keyboard_demo
+```
+Launch with custom resolution and rendering quality
+```bash
+ros2 launch stonefish_sim simulation.launch.py scenario:=gbr_keyboard_demo window_res_x:=1920 window_res_y:=1080 rendering_quality:=low
+```
+
+#### Available Scenarios
+
+The following scenarios are available:
+- `gbr_keyboard_demo`: Controlling ROV with keyboard
+- `gbr_pipeline`: Pipeline inspection (TAC Challenge)
+- `gbr_docking`: Docking station (TAC Challenge)
+- `gbr_structure`: Underwater structure inspection (TAC Challenge)
+
+#### Available Parameters
+
+- `scenario`: Name of the scenario file (required)
+- `window_res_x`: Window width in pixels (default: 1920)
+- `window_res_y`: Window height in pixels (default: 1080)
+- `rendering_quality`: Graphics quality - low/medium/high (default: high)

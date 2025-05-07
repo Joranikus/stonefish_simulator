@@ -1,10 +1,28 @@
 #!/bin/bash
 
-tmux new-session -d -s "gbr_demo"
+SESSION="gbr_demo"
 
-tmux split-window -h -t "gbr_demo:0"
+tmux has-session -t "$SESSION" 2>/dev/null && tmux kill-session -t "$SESSION"
 
-tmux send-keys -t "gbr_demo:0.0" "ros2 launch stonefish_sim simulation.launch.py scenario:=gbr_keyboard_demo window_res_x:=1920 window_res_y:=1080 rendering_quality:=low" C-m
-tmux send-keys -t "gbr_demo:0.1" "ros2 run gbr_manual_keyboard_controller gbr_manual_keyboard_controller" C-m
+tmux new-session -d -s "$SESSION" -n main
+tmux split-window -h -t "$SESSION:0"
 
-tmux attach-session -t "gbr_demo"
+KILL_CMD="tmux kill-session -t $SESSION"
+
+tmux send-keys -t "$SESSION:0.0" "
+bash -i -c '
+  trap \"$KILL_CMD\" EXIT
+  source install/setup.bash
+  ros2 launch stonefish_sim simulation.launch.py scenario:=gbr_keyboard_demo rendering_quality:=low
+'
+" C-m
+
+tmux send-keys -t "$SESSION:0.1" "
+bash -i -c '
+  trap \"$KILL_CMD\" EXIT
+  source install/setup.bash
+  ros2 run gbr_manual_keyboard_controller gbr_manual_keyboard_controller
+'
+" C-m
+
+tmux attach-session -t "$SESSION"
