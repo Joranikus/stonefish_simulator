@@ -9,14 +9,19 @@
 
 ```bash
   sudo apt update
-  rosdep update
-  rosdep install --from-paths src --ignore-src -r -y
 ```
-
+```bash
+  rosdep update
+```
 ### Installing Dependencies
 
 ```bash
-  sudo apt insall tmux
+  sudo apt install tmux
+```
+```bash
+  sudo apt install libglm-dev
+```
+```bash
   pip install pynput --break-system-packages
 ```
 
@@ -35,17 +40,29 @@ HTTPS:
 
 ```bash
   cd stonefish_simulator/include/stonefish
+```
+```bash
   mkdir build && cd build
+```
+```bash
   cmake ..
-  make
+```
+```bash
+  make -j$(nproc)
+```
+```bash
   sudo make install
-  cd ../..
+```
+```bash
+  cd ../../..
 ```
 
 ### Building The Simualtor
 
 ```bash
   colcon build --symlink-install
+```
+```bash
   source install/setup.bash
 ```
 
@@ -53,5 +70,7 @@ HTTPS:
 
 ```bash
   cd src/stonefish_sim/scripts
+```
+```bash
   bash gbr_keyboard_demo
 ```
