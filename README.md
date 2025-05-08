@@ -16,6 +16,7 @@
 
 ## Installation
 ![installation](./images/Installation.png)
+
 ### Prerequisites
 
 - Ubuntu 24.04
@@ -87,6 +88,7 @@ Needs to be run in git root:
 
 ## Running the Simulator
 ![runningsimulator](./images/Running_Simulator.png)
+
 The simulator can be run either through prepared scripts or manually with custom parameters.
 
 ### Using Prepared Scripts
