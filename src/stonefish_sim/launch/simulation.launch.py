@@ -38,6 +38,7 @@ def generate_launch_description():
             "gbr_pipeline",
             "gbr_docking",
             "gbr_structure",
+            "gbr_DYNSYS2025",
         ],
     )
 

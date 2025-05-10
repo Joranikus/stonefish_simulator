@@ -10,32 +10,24 @@ def main():
     node = Node('direct_interface_python')    
     rov = GBRDirectInterface(node)
 
-    # Forward movement
-    print("\n--- Moving forward ---")
     rov.set_thrusters([40.0, 40.0, -40.0, -40.0, 0.0, 0.0, 0.0, 0.0])
     for _ in range(20):
         rov.print_state()
         time.sleep(0.1)
         rclpy.spin_once(node)
     
-    # Rotate right
-    print("\n--- Rotating right ---")
     rov.set_thrusters([-40.0, 40.0, -40.0, 40.0, 0.0, 0.0, 0.0, 0.0])
     for _ in range(20):
         rov.print_state()
         time.sleep(0.1)
         rclpy.spin_once(node)
     
-    # Move backward
-    print("\n--- Moving backward ---")
     rov.set_thrusters([-40.0, -40.0, 40.0, 40.0, 0.0, 0.0, 0.0, 0.0])
     for _ in range(20):
         rov.print_state()
         time.sleep(0.1)
         rclpy.spin_once(node)
     
-    # Rotate left
-    print("\n--- Rotating left ---")
     rov.set_thrusters([40.0, -40.0, 40.0, -40.0, 0.0, 0.0, 0.0, 0.0])
     for _ in range(20):
         rov.print_state()

@@ -206,7 +206,7 @@
             <ros_publisher topic="/gbr/odom"/>
         </sensor>
 
-        <world_transform xyz="0.0 0.0 0.0" rpy="3.14159 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 1.0" rpy="3.14159 0.0 0.0"/>
         <ros_subscriber thrusters="/gbr/thrusters"/>
         <ros_publisher thrusters="/gbr/thruster_state"/>
     </robot>

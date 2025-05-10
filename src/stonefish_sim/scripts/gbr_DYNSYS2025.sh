@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SESSION="gbr_demo"
+SESSION="gbr_DYNSYS2025"
 
 tmux has-session -t "$SESSION" 2>/dev/null && tmux kill-session -t "$SESSION"
 
@@ -14,7 +14,7 @@ tmux send-keys -t "$SESSION:0.0" "
 bash -i -c '
   trap \"$KILL_CMD\" EXIT
   source install/setup.bash
-  ros2 launch stonefish_sim simulation.launch.py scenario:=gbr_keyboard_demo rendering_quality:=low
+  ros2 launch stonefish_sim simulation.launch.py scenario:=gbr_DYNSYS2025 rendering_quality:=low
 '
 " C-m
 
