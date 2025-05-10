@@ -206,6 +206,13 @@
             <ros_publisher topic="/gbr/odom"/>
         </sensor>
 
+        <sensor name="Cam" rate="30.0" type="camera">
+            <link name="Base"/>
+            <specs resolution_x="960" resolution_y="540" horizontal_fov="80.0"/>
+            <origin xyz="0.0 0.2 0.05" rpy="-1.57 0.0 0.0"/>
+            <ros_publisher topic="/gbr/cam"/>
+        </sensor>
+
         <world_transform xyz="0.0 0.0 1.0" rpy="3.14159 0.0 0.0"/>
         <ros_subscriber thrusters="/gbr/thrusters"/>
         <ros_publisher thrusters="/gbr/thruster_state"/>

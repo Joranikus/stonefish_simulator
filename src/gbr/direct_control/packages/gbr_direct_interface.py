@@ -21,13 +21,14 @@ class GBRDirectInterface:
         self._orientation = Quaternion()
         self._linear_velocity = Vector3()
         self._angular_velocity = Vector3()
+
         self._odom_subscriber = node.create_subscription(
             Odometry,
             '/gbr/odom',
             self._odom_callback,
             10
         )
-    
+        
     def _odom_callback(self, msg: Odometry):
         self._position = msg.pose.pose.position
         self._orientation = msg.pose.pose.orientation

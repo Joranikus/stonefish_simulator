@@ -30,7 +30,7 @@ tmux send-keys -t "$SESSION:0.2" "
 bash -i -c '
   trap \"$KILL_CMD\" EXIT
   source install/setup.bash
-  ros2 run gbr_manual_keyboard_controller gbr_manual_keyboard_controller
+  python3 src/gbr/direct_control/gbr_keyboard_demo.py
 '
 " C-m
 

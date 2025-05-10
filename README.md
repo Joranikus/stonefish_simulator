@@ -43,7 +43,7 @@ HTTPS:
 ### Installing Dependencies
 
 ```bash
-  sudo apt install -y tmux libglm-dev python3-pynput
+  sudo apt install -y tmux libglm-dev python3-pynput python3-opencv ros-jazzy-cv-bridge ros-jazzy-rqt-image-view
 ```
 
 ### Building Stonefish Library
