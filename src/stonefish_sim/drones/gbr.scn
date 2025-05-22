@@ -200,7 +200,7 @@
             </thrust_model>
         </actuator>
 
-        <sensor name="odom" type="odometry" rate="10.0">
+        <sensor name="odom" type="odometry" rate="1000.0">
             <link name="Base"/>
             <origin rpy="3.14159 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <ros_publisher topic="/gbr/odom"/>
@@ -213,7 +213,7 @@
             <ros_publisher topic="/gbr/cam"/>
         </sensor>
 
-        <world_transform xyz="0.0 0.0 1.0" rpy="3.14159 0.0 0.0"/>
+        <world_transform xyz="2.0 2.0 0.5" rpy="3.14159 0.0 0.0"/>
         <ros_subscriber thrusters="/gbr/thrusters"/>
         <ros_publisher thrusters="/gbr/thruster_state"/>
     </robot>

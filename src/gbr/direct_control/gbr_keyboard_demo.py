@@ -14,18 +14,18 @@ emergency_stop = False
 
 # Thrust mappings
 thrust_map = {
-    'w': [20.0, 20.0, -20.0, -20.0, 0.0, 0.0, 0.0, 0.0],    # Forward
-    's': [-20.0, -20.0, 20.0, 20.0, 0.0, 0.0, 0.0, 0.0],    # Backward
-    'a': [20.0, -20.0, 20.0, -20.0, 0.0, 0.0, 0.0, 0.0],    # Left turn
-    'd': [-20.0, 20.0, -20.0, 20.0, 0.0, 0.0, 0.0, 0.0],    # Right turn
-    'q': [0.0, 0.0, 0.0, 0.0, -20.0, -20.0, -20.0, -20.0],  # Down
-    'e': [0.0, 0.0, 0.0, 0.0, 20.0, 20.0, 20.0, 20.0],      # Up
-    'Key.up': [0.0, 0.0, 0.0, 0.0, -20.0, -20.0, 20.0, 20.0],      # Pitch up
-    'Key.down': [0.0, 0.0, 0.0, 0.0, 20.0, 20.0, -20.0, -20.0],    # Pitch down
-    'Key.left': [0.0, 0.0, 0.0, 0.0, 20.0, -20.0, 20.0, -20.0],    # Roll left
-    'Key.right': [0.0, 0.0, 0.0, 0.0, -20.0, 20.0, -20.0, 20.0],   # Roll right
-    'Key.page_up': [20.0, -20.0, -20.0, 20.0, 0.0, 0.0, 0.0, 0.0],     # Strafe right
-    'Key.page_down': [-20.0, 20.0, 20.0, -20.0, 0.0, 0.0, 0.0, 0.0],   # Strafe left
+    'w': [20.0, 20.0, -20.0, -20.0, 0.0, 0.0, 0.0, 0.0],    # Forward (psoitive Y)
+    's': [-20.0, -20.0, 20.0, 20.0, 0.0, 0.0, 0.0, 0.0],    # Backward (negative Y)
+    'a': [20.0, -20.0, 20.0, -20.0, 0.0, 0.0, 0.0, 0.0],    # Left turn (negative X)
+    'd': [-20.0, 20.0, -20.0, 20.0, 0.0, 0.0, 0.0, 0.0],    # Right turn (positive X)
+    'q': [0.0, 0.0, 0.0, 0.0, -20.0, -20.0, -20.0, -20.0],  # Down (positive Z)
+    'e': [0.0, 0.0, 0.0, 0.0, 20.0, 20.0, 20.0, 20.0],      # Up   (negative Z)
+    'Key.up': [0.0, 0.0, 0.0, 0.0, -20.0, -20.0, 20.0, 20.0],      # Negative pitch (points down)
+    'Key.down': [0.0, 0.0, 0.0, 0.0, 20.0, 20.0, -20.0, -20.0],    # Positive pitch (points up)
+    'Key.left': [0.0, 0.0, 0.0, 0.0, 20.0, -20.0, 20.0, -20.0],    # Positive Roll (rolls left)
+    'Key.right': [0.0, 0.0, 0.0, 0.0, -20.0, 20.0, -20.0, 20.0],   # Negative Roll (rolls right)
+    'Key.page_up': [20.0, -20.0, -20.0, 20.0, 0.0, 0.0, 0.0, 0.0],     # Negative yaw (turns left)
+    'Key.page_down': [-20.0, 20.0, 20.0, -20.0, 0.0, 0.0, 0.0, 0.0],   # Positive yaw (turns right)
 }
 
 def on_press(key):
@@ -50,7 +50,7 @@ def on_release(key):
         pass
 
 def display_status():
-    print("\033[2J\033[H")  # Clear screen and move cursor to top
+    #print("\033[2J\033[H")  # Clear screen and move cursor to top
     print(f"Active Keys: {active_keys}")
     print(f"Emergency Stop: {'ACTIVE' if emergency_stop else 'inactive'}")
 

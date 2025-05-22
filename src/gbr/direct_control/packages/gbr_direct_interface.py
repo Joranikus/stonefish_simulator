@@ -37,21 +37,34 @@ class GBRDirectInterface:
     
     def get_pose(self):
         position = (self._position.x, self._position.y, self._position.z)
-        quaternion = self._orientation
-        roll = math.atan2(2*(quaternion.w*quaternion.x + quaternion.y*quaternion.z), 
-                         1 - 2*(quaternion.x*quaternion.x + quaternion.y*quaternion.y))
-        pitch = math.asin(2*(quaternion.w*quaternion.y - quaternion.z*quaternion.x))
-        yaw = math.atan2(2*(quaternion.w*quaternion.z + quaternion.x*quaternion.y), 
-                        1 - 2*(quaternion.y*quaternion.y + quaternion.z*quaternion.z))
-        return position, (roll, pitch, yaw)
+        q = self._orientation  # Assuming q has attributes w, x, y, z
+
+        # Roll (x-axis rotation)
+        sinr_cosp = 2 * (q.w * q.x + q.y * q.z)
+        cosr_cosp = 1 - 2 * (q.x * q.x + q.y * q.y)
+        pitch = math.atan2(sinr_cosp, cosr_cosp)
+
+        # Pitch (y-axis rotation) with full -pi to pi range
+        sinp = 2 * (q.w * q.y - q.z * q.x)
+        cosp = 1 - 2 * (q.y * q.y + q.x * q.x)
+        roll = math.atan2(sinp, cosp)  # <- this allows full -π to π
+
+        # Yaw (z-axis rotation)
+        siny_cosp = 2 * (q.w * q.z + q.x * q.y)
+        cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z)
+        yaw = math.atan2(siny_cosp, cosy_cosp)
+
+        angle = (-roll, pitch, yaw)
+
+        return position, angle
     
     def get_velocity(self):
         lin_vel = (self._linear_velocity.x, 
-                  self._linear_velocity.y, 
+                  -self._linear_velocity.y, 
                   self._linear_velocity.z)
         
-        ang_vel = (self._angular_velocity.x,
-                  self._angular_velocity.y,
+        ang_vel = (-self._angular_velocity.y,
+                  self._angular_velocity.x,
                   self._angular_velocity.z)
         return lin_vel, ang_vel
     
